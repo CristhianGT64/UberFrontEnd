@@ -24,14 +24,21 @@
         }
     </Style>
 </head>
+
 <body class= "d-flex justify-content-center align-items-center vh-100"> 
     <div id="container" class= "border p-5 rounded-5" style= "width: 22rem">
     <h1 class= "text-center fs-1 fw-bolder">Inicio de sesión</h1> 
     <div class="mt-3">
-        <form action="#" method="POST">
+        <form action="{{route('usuario.iniciar')}}" method="POST">
             {{-- //Usamos el metodo post para que no se vea la informacion en la url --}}
             @csrf
                 <div>
+                 @if ((session('status') == 1))
+                    <div class="alert alert-warning" role="alert">
+                        Usuario o Contraseña Incorrectos
+                      </div>
+                      
+                @endif
                 <label class="fs-5 fw-bolder" for="email">Email</label>
                 <input class="form-control mt-0.5 " type="email" placeholder="Correo Electronico" name="email">
                 </div>
@@ -50,7 +57,9 @@
                 <input id="btninicioSecion" class="btn btn-info w-100 mt-2 fw-bold " type="submit" value="Iniciar Sesión" >
                 </div>
         </form>
+        
         </div>
     </div>
+
 </body>
 </html>

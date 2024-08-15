@@ -2,10 +2,11 @@
 <html lang="en">
 
 @php
-    if ($_SESSION['activo'] === false) {
-    header('Location: inicioSesion.php');
-    exit();
-}
+
+    if (empty($_SESSION)) {
+        header('Location: /login');
+        exit();
+    }
 @endphp
 
 <head>
@@ -118,6 +119,12 @@
                 <a class="navbar-brand" href="#">
                     <img src="https://via.placeholder.com/50" alt="Logo"> EasyTaxi
                 </a>
+                <a class="btn btn-secondary" href="{{route('usuario.cerrarSesion')}}">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-power" viewBox="0 0 16 16">
+                        <path d="M7.5 1v7h1V1z"/>
+                        <path d="M3 8.812a5 5 0 0 1 2.578-4.375l-.485-.874A6 6 0 1 0 11 3.616l-.501.865A5 5 0 1 1 3 8.812"/>
+                    </svg>
+                </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -135,16 +142,34 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#"><i class="bi bi-person-vcard"></i> Conducir</a>
                         </li>
+                        @foreach ($_SESSION['roles'] as $rol)
+                            @if ($rol === 1)
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#"><i class="bi bi-building"></i> Administrar</a>
+                                </li>
+                             @endif
+                        @endforeach
+
                         <li class="nav-item">
-                            <a class="btn btn-custom" href="#"><i class="bi bi-box-arrow-in-right"></i> Inicia Sesión</a>
-                        </li>
-                        <li class="nav-item ms-4">
-                            <a class="btn btn-custom " href="#"><i class="bi bi-person-plus"></i> Regístrate</a>
+                            <p class="nav-link" href="#"><i class="bi bi-envelope"></i> {{$_SESSION['correo']}}</p>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
+
+        <nav class="navbar bg-body-tertiary">
+            <div class="container-fluid">
+              <div class="navbar-brand" href="#">
+            
+                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                        <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6"/>
+                      </svg>
+                  </svg>
+                    Bienvenido {{ $_SESSION['nombreCompleto'] }}
+                </div>
+            </div>
+          </nav>
 
         @php
             echo '<pre>';

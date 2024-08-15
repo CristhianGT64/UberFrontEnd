@@ -33,18 +33,28 @@ class UsuariosController extends Controller
         ]);
 
         if($guardarUsuario){
-            //Traer informacion del usuario e iniciar sesion
+            session_abort();
+
+            return $this->verificarUsuario($request->email);
+
+        }
+        
+        return view('nuevoUsuario');
+    }
+
+    public function verificarUsuario($email = ""){
+
+        //Traer informacion del usuario e iniciar sesion
             // 
             $usuario = Http::get('http://localhost:8080/api/buscarUsuario',[
-                'correo'=>$request->email
+                'correo'=>$email
             ]);
-
             // echo '<pre>';
             // var_dump($usuario->json());
             // echo '</pre>';
 
+            // exit;
             $usuarioActivo = $usuario->json();
-
             session_start();
             $_SESSION["idUsuario"] = $usuarioActivo['idUsuario'];
             $_SESSION["correo"] = $usuarioActivo['correo'];
@@ -52,13 +62,35 @@ class UsuariosController extends Controller
             $_SESSION["roles"] = $usuarioActivo['roles'];
             $_SESSION["activo"] = true;
 
-            return redirect('viewUsuario');
+            return redirect('/Usuario/menuUsuario');
+            // return view('nuevoUsuario');
+    }
 
+    public function menuCliente(){
+        session_start();
+
+        return view('viewUsuario');
+    }
+
+    public function CerraSesion(){
+        session_start();
+        $_SESSION = [];
+        return redirect('/login');
+    }
+
+    public function iniciarSesion(Request $request){
+        $ValidarUsuario = Http::get('http://localhost:8080/api/iniciarSesion', [
+            'correo'=>$request->email,
+            'contrasenia'=>$request->contrasena
+        ]);
+
+
+        if($ValidarUsuario->json()){
+            return $this->verificarUsuario($request->email);
         }
         
-        return view('nuevoUsuario');
-
-
+        //Retornamos al login con un uno para indicar que el usuario y la contra no existen
+        return redirect('/login')->with('status',1);
     }
 
 
