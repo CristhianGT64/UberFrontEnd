@@ -25,7 +25,7 @@
     </Style>
 </head>
 <body class= "d-flex justify-content-center align-items-center vh-100"> 
-    <div id="container" class= "border p-5 rounded-5" style= "width: 25rem">
+    <div id="container" class= "border p-5 rounded-5" style= "width: 22rem">
     <h1 class= "text-center fs-1 fw-bolder">Inicio de sesión</h1> 
     <div class="mt-3">
         <form action="#" method="POST">

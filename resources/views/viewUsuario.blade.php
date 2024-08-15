@@ -1,6 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 
+@php
+    if ($_SESSION['activo'] === false) {
+    header('Location: inicioSesion.php');
+    exit();
+}
+@endphp
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -138,6 +145,12 @@
                 </div>
             </div>
         </nav>
+
+        @php
+            echo '<pre>';
+            var_dump($_SESSION);
+            echo '</pre>';
+        @endphp
 
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
             <div class="carousel-indicators">

@@ -1,4 +1,4 @@
-import {ubicacionRepartidor} from '../js/ubicacionRepartidor.js';
+// import {ubicacionRepartidor} from '../js/ubicacionRepartidor.js';
 
 const Repartidores = [];
 const locations = [
@@ -196,26 +196,26 @@ function RadianesGrados(radianes){
         }
 
         //Meter ubicaciones traida de la base de datos a location
-        repartidoreBD.forEach(repartidor => {
-            const id = repartidor.idusuario;
-            const latRepartidor = repartidor.latitud;
-            const lngRepartidor = repartidor.longitud;
-            const nvoPosicionRepartidor = new ubicacionRepartidor(id, calcularRumbo(repartidor), calcularDistancia(repartidor), latRepartidor, lngRepartidor);
-            Repartidores.push(nvoPosicionRepartidor);
-            const posicion = { lat: latRepartidor, lng:lngRepartidor };
-            locations.push(posicion);
-        });
+        // repartidoreBD.forEach(repartidor => {
+        //     const id = repartidor.idusuario;
+        //     const latRepartidor = repartidor.latitud;
+        //     const lngRepartidor = repartidor.longitud;
+        //     const nvoPosicionRepartidor = new ubicacionRepartidor(id, calcularRumbo(repartidor), calcularDistancia(repartidor), latRepartidor, lngRepartidor);
+        //     Repartidores.push(nvoPosicionRepartidor);
+        //     const posicion = { lat: latRepartidor, lng:lngRepartidor };
+        //     locations.push(posicion);
+        // });
 
         //Meter ubicaciones traida de la base de datos a locationNegocios
-        negociosBD.forEach(negocio => {
-            const ubicacionNegocio = {lat: negocio.latitud, lng:negocio.longitud};
-            locationNegocios.push(ubicacionNegocio);
-        });
+        // negociosBD.forEach(negocio => {
+        //     const ubicacionNegocio = {lat: negocio.latitud, lng:negocio.longitud};
+        //     locationNegocios.push(ubicacionNegocio);
+        // });
 
 
     async function initMap() {
 
-        console.log(negociosBD);
+        // console.log(negociosBD);
 
             // Librerias necesarias para el mapa, map, infoWindows y marker
             const { Map, InfoWindow } = await google.maps.importLibrary("maps");
@@ -254,4 +254,4 @@ function RadianesGrados(radianes){
 
     
 initMap(); //Llamado a la funcion
-setInterval(actualizarUbicaciones,500);
+// setInterval(actualizarUbicaciones,500);
