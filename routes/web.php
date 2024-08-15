@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdministradoresController;
 use App\Http\Controllers\ConductorController;
 use App\Http\Controllers\SolicitudConductorController;
 use App\Http\Controllers\UsuariosController;
@@ -24,12 +25,16 @@ Route::post('/Usuario/IniciarSesion', [UsuariosController::class, 'iniciarSesion
 
 
 /* Conductores ----------------------------------------------------------------- */
-Route::get('/Conductores/CambioModo', [ConductorController::class, 'modoConductor'])->name('conductor.solictud');
-Route::get('/Conductores/menuPrincipal', [ConductorController::class, 'CrearUsuario'])->name('conductor.menuConductor');
+Route::get('/Conductores/CambioModo', [ConductorController::class, 'modoConductor'])->name('conductor.cambiarModo');
+Route::get('/Conductores/menuPrincipal', [ConductorController::class, ''])->name('conductor.menuConductor');
 
-/* SolicitudesCondutores */
+
+/* SolicitudesCondutores ---------------------------------------------------------- */
 Route::get('/SolicitudConductor/Solictud', [SolicitudConductorController::class, 'Solicitud'])->name('solictudConduc.solictud');
 
+/* Administradores */
+Route::get('/Administradores/CambioModo', [AdministradoresController::class, 'modoAdministrador'])->name('Administrador.cambiarModo');
+Route::get('/Administradores/menuAdministrador', [AdministradoresController::class, 'menuAdministrador'])->name('Administrador.menuAdministrador');
 
 
 

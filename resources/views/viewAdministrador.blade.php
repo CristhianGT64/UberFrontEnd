@@ -114,7 +114,7 @@
                 <a href="#"><i class="fas fa-car"></i> Ver Conductores</a>
                 <a href="#"><i class="fas fa-users"></i> Ver Usuarios</a>
                 <a href="#"><i class="fas fa-route"></i> Ver Viajes</a>
-                <a href="#"><i class="fas fa-arrow-left"></i> Salir de modo admministrador</a>
+                <a href="{{route('usuario.menuCliente')}}"><i class="fas fa-arrow-left"></i> Salir de modo admministrador</a>
             </nav>
             
             <main class="content" id="content">
