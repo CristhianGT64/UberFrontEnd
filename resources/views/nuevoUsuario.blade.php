@@ -89,8 +89,8 @@
 
                 <br>
                 <div>{{-- Latitud y Longitud --}}
-                    <input type="hidden" name="latitud" id="latitudActual" > {{-- Hidden para que no sea visible en el formulario --}}
-                    <input type="hidden" name="longitud" id="longitudActual" >
+                    <input type="hidden" name="latitud" id="latitud" > {{-- Hidden para que no sea visible en el formulario --}}
+                    <input type="hidden" name="longitud" id="longitud" >
                 </div> {{-- Latitud y Longitud --}}
                 <div>
                     <input type="submit" value="Crear Usuario" style="display: flex">
