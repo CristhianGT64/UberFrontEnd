@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use PhpParser\Node\Stmt\Return_;
 
 class UsuariosController extends Controller
 {
@@ -23,7 +24,7 @@ class UsuariosController extends Controller
                 "nombre2"=>$request->segundoNombre,
                 "apellido1"=>$request->primerApellido,
                 "apellido2"=>$request->segundoApellido,
-                "telefonos"=>[
+                "telefonosUsuario"=>[
                     [
                         "numero"=>$request->telefono
                     ]
@@ -31,8 +32,34 @@ class UsuariosController extends Controller
             ]
         ]);
 
-        echo($guardarUsuario);
-        exit;
+        if($guardarUsuario){
+            //Traer informacion del usuario e iniciar sesion
+            // 
+            $usuario = Http::get('http://localhost:8080/api/buscarUsuario',[
+                'correo'=>$request->email
+            ]);
+
+            // echo '<pre>';
+            // var_dump($usuario->json());
+            // echo '</pre>';
+
+            $usuarioActivo = $usuario->json();
+
+            session_start();
+            $_SESSION["idUsuario"] = $usuarioActivo['idUsuario'];
+            $_SESSION["correo"] = $usuarioActivo['correo'];
+            $_SESSION["nombreCompleto"] = $usuarioActivo['nombreCompleto'];
+            $_SESSION["roles"] = $usuarioActivo['roles'];
+            $_SESSION["activo"] = true;
+
+            return redirect('viewUsuario');
+
+        }
+        
+        return view('nuevoUsuario');
+
 
     }
+
+
 }
