@@ -103,6 +103,26 @@
                                     <input type="text" placeholder="Placa de Automovil" id="numPlaca" name="numPlaca">
                                 </div>
                                 <div>
+
+                                <div class="mb-3">
+                                        <label for="colorSelect" class="form-label">Selecciona la marca del automovil</label>
+                                        
+                                        <select id="MarcaAutomovil" class="form-select">
+                                            <!-- Opciones se llenarán con JavaScript -->
+                                            <option value="" disabled selected>Seleccione una marca</option>
+
+                                        </select>                                     
+                                </div>
+
+                                <div class="mb-3">
+                                        <label for="colorSelect" class="form-label">Selecciona el modelo del automovil</label>
+                                        
+                                        <select id="MarcaAutomovil" class="form-select">
+                                            <!-- Opciones se llenarán con JavaScript -->
+                                            <option value="" disabled selected>Seleccione un modelo</option>
+
+                                        </select>                                     
+                                </div>
                                     <div class="mb-3">
                                         <label for="colorSelect" class="form-label">Selecciona un color</label>
                                         
@@ -146,30 +166,7 @@
                             </div> 
                           
            
-                </fieldset>
-                <legend>Ubicacion Base del conductor</legend>   
-                    {{-- Comienzo del mapa --}}
-
-                    <h3>¿Cual es tu direccion?</h3>
-                    <!--The div element for the map -->
-                    <div id="map"></div>
-                
-                    <!-- prettier-ignore -->
-                    {{-- Script unico para marcar la ubicaion actual--}}
-                    <script
-                    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpRCB0Sg5No0ReolmJ-2dOzOsIhrUpb_Y&callback=initMap&v=weekly"
-                    defer
-                    ></script>
-
-
-                    {{-- Fin del mapa --}}
-
-                <br>
-                <div>{{-- Latitud y Longitud --}}
-                    <input type="hidden" name="latitud" id="latitudActual" > {{-- Hidden para que no sea visible en el formulario --}}
-                    <input type="hidden" name="longitud" id="longitudActual" >
-                </div> {{-- Latitud y Longitud --}}
-                           
+                </fieldset>                        
             </div>
         </div>
            
@@ -186,8 +183,7 @@
     </form> {{-- Fin del formulario --}}
     </div>
 
-    {{-- <script src="/js/mapa.js"></script> --}}
-    <script src="/js/PosicionActualUsuario.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/js/ScriptFormConductor.js"></script>
      
