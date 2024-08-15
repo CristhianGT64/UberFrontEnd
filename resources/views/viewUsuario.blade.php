@@ -140,7 +140,7 @@
                             <a class="nav-link" href="#"><i class="bi bi-car-front"></i> Viajes</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#"><i class="bi bi-person-vcard"></i> Conducir</a>
+                            <a class="nav-link" href="{{route('solictudConduc.solictud')}}"><i class="bi bi-person-vcard"></i> Conducir</a>
                         </li>
                         @foreach ($_SESSION['roles'] as $rol)
                             @if ($rol === 1)
