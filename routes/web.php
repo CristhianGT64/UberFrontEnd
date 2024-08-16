@@ -12,7 +12,7 @@ Route::get('/login', function () {
 })->name('login');
 
 Route::get('/mapa', function () {
-    return view('nuevoConductor');
+    return view('solicitudViaje');
 });
 
 /* Usuarios ------------------------------------------ */

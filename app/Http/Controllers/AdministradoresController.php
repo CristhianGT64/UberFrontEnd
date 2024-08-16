@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Http;
 use Illuminate\Http\Request;
 
 class AdministradoresController extends Controller
@@ -9,6 +9,7 @@ class AdministradoresController extends Controller
     public function modoAdministrador(){
         session_start();
 
+        //Verificar que el usuario sea un administrador
         foreach ($_SESSION['roles'] as $rol):
             if ($rol === 1):
                 //Mandarlo directamente al menu de conductor
@@ -23,6 +24,21 @@ class AdministradoresController extends Controller
     public function menuAdministrador(){
         session_start();
 
-        return view('viewAdministrador');
+        //Traer todas las solicitudes
+
+        $detallesSolicitud = Http::get('http://localhost:8080/api/solicitud/detallesSolicitud')->json();
+        $fotografiasSolicitud = Http::get('http://localhost:8080/api/solicitud/fotografiasSolicitudes')->json();
+
+        // echo('<pre>');
+        // var_dump($detallesSolicitud);
+        // echo('<pre>');
+
+        // echo('<pre>');
+        // var_dump($fotografiasSolicitud);
+        // echo('<pre>');
+
+        // exit;
+
+        return view('viewAdministrador', compact('detallesSolicitud', 'fotografiasSolicitud'));
     }
 }

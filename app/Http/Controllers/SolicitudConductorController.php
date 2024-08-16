@@ -67,13 +67,13 @@ class SolicitudConductorController extends Controller
             ],
             "fotografiaSolicitud"=>[
                 [
-                    "ubicacion"=>$CarpetaImagenesSolicitud.'/'.$nombreFotoPersona
+                    "ubicacion"=>$nombreFotoPersona
                 ],
                 [
-                    "ubicacion"=>$CarpetaImagenesSolicitud.'/'.$nombreFotoLicencia
+                    "ubicacion"=>$nombreFotoLicencia
                 ],
                 [
-                    "ubicacion"=>$CarpetaImagenesSolicitud.'/'.$nombreFotoVehiculo
+                    "ubicacion"=>$nombreFotoVehiculo
                 ]
             ]
         ]);

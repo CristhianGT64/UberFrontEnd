@@ -179,36 +179,7 @@
                                     <a href="#" name="RechzarSolicitud" class="btn btn-danger btn-sm RechzarSolicitud" data-bs-toggle="modal" data-bs-target=".exampleModal" title="Rechazar">
                                         <i class="fas fa-times"></i>
                                     </a>
-                                        <a href="" name="VerInformacion" class="btn btn-info btn-sm VerInformacion"  data-bs-placement="top" title="Ver Más" data-bs-toggle="modal" data-bs-target=".viewSolicitud"
-                                        data-id="{{$solicitud['idSolicitud']}}"
-                                        data-nombre="{{ $solicitud['nombreCompleto'] }}"
-                                        data-correo="{{ $solicitud['correo'] }}"
-                                        data-telefono="{{ $solicitud['numero'] }}"
-                                        data-fecha-nacimiento="{{ $solicitud['fechaNacimiento'] }}"
-                                        data-licencia="{{ $solicitud['licencia'] }}"
-                                        data-fecha-vencimiento="{{ $solicitud['fechaVencimiento'] }}"
-                                        data-color-auto="{{ $solicitud['colorVehiculo'] }}"
-                                        data-placa-auto="{{ $solicitud['numPlaca'] }}"
-                                        data-num-puertas="{{ $solicitud['numPuertas'] }}"
-                                        data-anio="{{ $solicitud['anio'] }}"
-                                        data-num-asientos="{{ $solicitud['numAsientos'] }}"
-                                        data-marca="{{ $solicitud['nombreMarca'] }}"
-                                        data-modelo="{{ $solicitud['nombreModelo'] }}"
-                                        @foreach ($fotografiasSolicitud as $foto)
-                                            @if ($foto['idSolicitud'] == ($solicitud['idSolicitud']) )
-                                                @if ($foto['idTipoFotografia'] == 4)
-                                                    data-foto-retrato="{{ $foto['ubicacion'] }}"
-                                                @endif
-                                                @if ($foto['idTipoFotografia'] == 2)
-                                                    data-foto-licencia="{{ $foto['ubicacion'] }}"  
-                                                @endif
-                                                @if ($foto['idTipoFotografia'] == 3)
-                                                    data-foto-auto="{{ $foto['ubicacion'] }}"
-                                                @endif 
-                                            @endif
-                                        @endforeach
-                                        ><i class="fas fa-eye"></i></a>
-                                    </a>
+                                        <a href="{{$solicitud['idSolicitud']}}" name="VerInformacion" class="btn btn-info btn-sm VerInformacion"  data-bs-placement="top" title="Ver Más" data-bs-toggle="modal" data-bs-target=".viewSolicitud"><i class="fas fa-eye"></i></a>
                                     </td>
                                 </tr>
                             @endforeach
@@ -289,7 +260,7 @@
     </div>
     
     <!-- Modal para ver solicitudes -->
-    <div  class="modal fade viewSolicitud"  tabindex="-1" aria-labelledby="viewSolicitudLabel" aria-hidden="true">
+    <div class="modal fade viewSolicitud"  tabindex="-1" aria-labelledby="viewSolicitudLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
@@ -303,14 +274,14 @@
                             Datos del Usuario
                         </div>
                         <div class="card-body">
-                            <p><strong>Correo del usuario : <span id="CorreoConductor"></span></strong></p>
-                            <p><strong>Nombre Completo:</strong><span id = "nombreCompletoConductor"></span></p>
-                            <p><strong>Teléfono:</strong id="TelefonoConductor"> <span id = "TelefonoConductor"></span> </p>
+                            <p><strong>Correo del usuario:</strong> usuario@correo.com</p>
+                            <p><strong>Nombre Completo:</strong id="nombreCompletoConductor"> Nombre1 Nombre2 Apellido1 Apellido2</p>
+                            <p><strong>Teléfono:</strong id="TelefonoConductor"> +123456789</p>
                             <div class="mb-3">
                                 <label class="form-label"><strong>Foto del Retrato:</strong></label>
-                                <img id="FotoRetratoConductor" src="" alt="Foto del Retrato" class="img-fluid rounded">
+                                <img id="FotoRetratoConductor"src="#" alt="Foto del Retrato" class="img-fluid rounded">
                             </div>
-                            <p><strong>Fecha de Nacimiento:</strong id="FechaNacimientoConductor"><span id="FechaNacimientoConductor"></span></p>
+                            <p><strong>Fecha de Nacimiento:</strong id="FechaNacimientoConductor"> 01/01/1990</p>
                         </div>
                     </div>
                     
@@ -320,8 +291,8 @@
                             Datos de la Licencia
                         </div>
                         <div class="card-body">
-                            <p><strong>Número de la Licencia: </strong id="viewLicencia"><span id="viewLicencia"></span></p>
-                            <p><strong>Fecha de Vencimiento: </strong id="viewFechaVencimientoL"><span id="viewFechaVencimientoL"></span></p>
+                            <p><strong>Número de la Licencia:</strong id="viewLicencia"> 123456789</p>
+                            <p><strong>Fecha de Vencimiento:</strong id="viewFechaVencimientoL"> 01/01/2025</p>
                             <div class="mb-3">
                                 <label class="form-label"><strong>Foto de la Licencia:</strong></label>
                                 <img  id="viewFotoLicencia" src="#" alt="Foto de la Licencia" class="img-fluid rounded" >
@@ -335,13 +306,13 @@
                             Datos del Vehículo
                         </div>
                         <div class="card-body">
-                            <p><strong>Color del Vehículo:</strong id="viewColorAuto"> <span id="viewColorAuto"></span></p>
-                            <p><strong>Número de Placa:</strong id="viewPlacaAuto"> <span id="viewPlacaAuto"></span></p>
-                            <p><strong>Número de Puertas:</strong id="viewNumPuertasAuto"> <span id="viewNumPuertasAuto"></span></p>
-                            <p><strong>Año:</strong id="viewAnioAuto"> <span id="viewAnioAuto"></span></p>
-                            <p><strong>Número de Asientos:</strong id="viewNumAsientoAuto"> <span id="viewNumAsientoAuto"></span></p>
-                            <p><strong>Marca:</strong id="viewMarcaAuto"> <span id="viewMarcaAuto"></span></p>
-                            <p><strong>Modelo:</strong id="viewModeloAuto"> <span id="viewModeloAuto"></span></p>
+                            <p><strong>Color del Vehículo:</strong id="viewColorAuto"> Rojo</p>
+                            <p><strong>Número de Placa:</strong id="viewPlacaAuto"> ABC123</p>
+                            <p><strong>Número de Puertas:</strong id="viewNumPuertasAuto"> 4</p>
+                            <p><strong>Año:</strong id="viewAnioAuto"> 2020</p>
+                            <p><strong>Número de Asientos:</strong id="viewNumAsientoAuto"> 5</p>
+                            <p><strong>Marca:</strong id="viewMarcaAuto"> Toyota</p>
+                            <p><strong>Modelo:</strong id="viewModeloAuto"> Corolla</p>
                             <div class="mb-3">
                                 <label class="form-label"><strong>Foto del Vehículo:</strong></label>
                                 <img id="viewFotoAuto" src="#" alt="Foto del Vehículo" class="img-fluid rounded">
@@ -438,53 +409,6 @@
         document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(element => {
             new bootstrap.Tooltip(element);
         });
-
-
-        document.querySelectorAll('.VerInformacion').forEach(button => {
-            button.addEventListener('click', function() {
-                // Obtener los atributos de datos del botón
-                const nombre = this.getAttribute('data-nombre');
-                const correo = this.getAttribute('data-correo');
-                const telefono = this.getAttribute('data-telefono');
-                const fotoRetrato = this.getAttribute('data-foto-retrato');
-                const fechaNacimiento = this.getAttribute('data-fecha-nacimiento');
-                const licencia = this.getAttribute('data-licencia');
-                const fechaVencimiento = this.getAttribute('data-fecha-vencimiento');
-                const fotoLicencia = this.getAttribute('data-foto-licencia');
-                const colorAuto = this.getAttribute('data-color-auto');
-                const placaAuto = this.getAttribute('data-placa-auto');
-                const numPuertas = this.getAttribute('data-num-puertas');
-                const anio = this.getAttribute('data-anio');
-                const numAsientos = this.getAttribute('data-num-asientos');
-                const marca = this.getAttribute('data-marca');
-                const modelo = this.getAttribute('data-modelo');
-                const fotoAuto = this.getAttribute('data-foto-auto');
-    
-                // Actualizar los campos de la modal
-                document.getElementById('nombreCompletoConductor').textContent = nombre;
-                document.getElementById('CorreoConductor').textContent = correo;
-                document.getElementById('TelefonoConductor').textContent = telefono;
-                
-                document.getElementById('FotoRetratoConductor').src = "/imagenesProductos/"+fotoRetrato
-                console.log(fotoRetrato);
-
-                document.getElementById('FechaNacimientoConductor').textContent = fechaNacimiento;
-    
-                document.getElementById('viewLicencia').textContent = licencia;
-                document.getElementById('viewFechaVencimientoL').textContent = fechaVencimiento;
-                document.getElementById('viewFotoLicencia').src = "/imagenesProductos/"+fotoLicencia;
-    
-                document.getElementById('viewColorAuto').textContent = colorAuto;
-                document.getElementById('viewPlacaAuto').textContent = placaAuto;
-                document.getElementById('viewNumPuertasAuto').textContent = numPuertas;
-                document.getElementById('viewAnioAuto').textContent = anio;
-                document.getElementById('viewNumAsientoAuto').textContent = numAsientos;
-                document.getElementById('viewMarcaAuto').textContent = marca;
-                document.getElementById('viewModeloAuto').textContent = modelo;
-                document.getElementById('viewFotoAuto').src = "/imagenesProductos/"+fotoAuto;
-            });
-        });
-
     </script>
 </body>
 </html>
