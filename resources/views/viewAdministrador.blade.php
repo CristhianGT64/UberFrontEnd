@@ -164,13 +164,13 @@
                                     <td></td>
                                     <td></td>
                                     <td>
-                                    <a href="#" name="AceptarSolicitud" class="btn btn-success btn-sm AceptarSolicitud" data-bs-toggle="modal" data-bs-target="#exampleModal" title="Aceptar">
+                                    <a href="#" name="AceptarSolicitud" class="btn btn-success btn-sm AceptarSolicitud" data-bs-toggle="modal" data-bs-target=".exampleModal" title="Aceptar">
                                         <i class="fas fa-check"></i>
                                     </a>
-                                    <a href="#" name="RechzarSolicitud" class="btn btn-danger btn-sm RechzarSolicitud" data-bs-toggle="modal" data-bs-target="#exampleModal" title="Rechazar">
+                                    <a href="#" name="RechzarSolicitud" class="btn btn-danger btn-sm RechzarSolicitud" data-bs-toggle="modal" data-bs-target=".exampleModal" title="Rechazar">
                                         <i class="fas fa-times"></i>
                                     </a>
-                                        <a href="#" name="VerInformacion" class="btn btn-info btn-sm VerInformacion" data-bs-toggle="tooltip" data-bs-placement="top" title="Ver Más"><i class="fas fa-eye"></i></a>
+                                        <a href="#" name="VerInformacion" class="btn btn-info btn-sm VerInformacion"  data-bs-placement="top" title="Ver Más" data-bs-toggle="modal" data-bs-target=".viewSolicitud"><i class="fas fa-eye"></i></a>
                                     </td>
                                 </tr>
                                 <!-- Agrega más filas aquí -->
@@ -230,7 +230,7 @@
 
 
     <!--  Ventanas Modales  -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade exampleModal"  tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -247,7 +247,74 @@
             </div>
         </div>
     </div>
-
+    
+    <!-- Modal para ver solicitudes -->
+    <div class="modal fade viewSolicitud"  tabindex="-1" aria-labelledby="viewSolicitudLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="viewSolicitudLabel">Detalles de la Solicitud</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Datos del usuario -->
+                    <div class="card mb-3">
+                        <div class="card-header">
+                            Datos del Usuario
+                        </div>
+                        <div class="card-body">
+                            <p><strong>Correo del usuario:</strong> usuario@correo.com</p>
+                            <p><strong>Nombre Completo:</strong id="nombreCompletoConductor"> Nombre1 Nombre2 Apellido1 Apellido2</p>
+                            <p><strong>Teléfono:</strong id="TelefonoConductor"> +123456789</p>
+                            <div class="mb-3">
+                                <label class="form-label"><strong>Foto del Retrato:</strong></label>
+                                <img id="FotoRetratoConductor"src="#" alt="Foto del Retrato" class="img-fluid rounded">
+                            </div>
+                            <p><strong>Fecha de Nacimiento:</strong id="FechaNacimientoConductor"> 01/01/1990</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Datos de la licencia -->
+                    <div class="card mb-3">
+                        <div class="card-header">
+                            Datos de la Licencia
+                        </div>
+                        <div class="card-body">
+                            <p><strong>Número de la Licencia:</strong id="viewLicencia"> 123456789</p>
+                            <p><strong>Fecha de Vencimiento:</strong id="viewFechaVencimientoL"> 01/01/2025</p>
+                            <div class="mb-3">
+                                <label class="form-label"><strong>Foto de la Licencia:</strong></label>
+                                <img  id="viewFotoLicencia" src="#" alt="Foto de la Licencia" class="img-fluid rounded" >
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Datos del vehículo -->
+                    <div class="card">
+                        <div class="card-header">
+                            Datos del Vehículo
+                        </div>
+                        <div class="card-body">
+                            <p><strong>Color del Vehículo:</strong id="viewColorAuto"> Rojo</p>
+                            <p><strong>Número de Placa:</strong id="viewPlacaAuto"> ABC123</p>
+                            <p><strong>Número de Puertas:</strong id="viewNumPuertasAuto"> 4</p>
+                            <p><strong>Año:</strong id="viewAnioAuto"> 2020</p>
+                            <p><strong>Número de Asientos:</strong id="viewNumAsientoAuto"> 5</p>
+                            <p><strong>Marca:</strong id="viewMarcaAuto"> Toyota</p>
+                            <p><strong>Modelo:</strong id="viewModeloAuto"> Corolla</p>
+                            <div class="mb-3">
+                                <label class="form-label"><strong>Foto del Vehículo:</strong></label>
+                                <img id="viewFotoAuto" src="#" alt="Foto del Vehículo" class="img-fluid rounded">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 
@@ -294,7 +361,7 @@
                 boton.addEventListener('click', function (event) {
                     event.preventDefault();  // Prevenir el comportamiento por defecto del enlace
                     const tipo = boton.getAttribute('title').toLowerCase();  // 'aceptar' o 'rechazar'
-                    Modal.callModal('#exampleModal', event, tipo);  // Llama a la función para personalizar el modal
+                    Modal.callModal('.exampleModal', event, tipo);  // Llama a la función para personalizar el modal
                 });
             });
         });
