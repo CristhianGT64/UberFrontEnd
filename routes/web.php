@@ -31,6 +31,8 @@ Route::get('/Conductores/menuPrincipal', [ConductorController::class, ''])->name
 
 /* SolicitudesCondutores ---------------------------------------------------------- */
 Route::get('/SolicitudConductor/Solictud', [SolicitudConductorController::class, 'Solicitud'])->name('solictudConduc.solictud');
+Route::post('/SolicitudConductor/GuardarSolicitud', [SolicitudConductorController::class, 'GuadarSolicitud'])->name('solicitud.GuardarSolicitud');
+
 
 /* Administradores */
 Route::get('/Administradores/CambioModo', [AdministradoresController::class, 'modoAdministrador'])->name('Administrador.cambiarModo');

@@ -1,6 +1,6 @@
 // import {ubicacionRepartidor} from '../js/ubicacionRepartidor.js';
 
-const Repartidores = [];
+const conductores = [];
 const locations = [
     { lat: 14.0857108, lng: -87.1994419  },
     ];

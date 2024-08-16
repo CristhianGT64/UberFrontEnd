@@ -1,5 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
+    @php
+
+    if (empty($_SESSION)) {
+        header('Location: /login');
+        exit();
+    }
+@endphp
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">

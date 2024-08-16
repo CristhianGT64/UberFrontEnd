@@ -69,7 +69,9 @@ class UsuariosController extends Controller
     public function menuCliente(){
         session_start();
 
-        return view('viewUsuario');
+        $status = session('status'); // Esto capturará el 'status' de la sesión
+
+        return view('viewUsuario', compact('status'));
     }
 
     public function CerraSesion(){

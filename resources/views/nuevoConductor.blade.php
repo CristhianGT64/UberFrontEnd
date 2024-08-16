@@ -1,5 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+    @php
+
+    if (empty($_SESSION)) {
+        header('Location: /login');
+        exit();
+    }
+@endphp
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,7 +33,7 @@
 <body>
 <h1>Registro de Conductores</h1>
     <div>
-        <form action="" method="POST"> 
+        <form action="{{route('solicitud.GuardarSolicitud')}}" method="POST" enctype="multipart/form-data"> 
             @csrf
             <div>
                 <fieldset>
@@ -43,8 +50,8 @@
                           <!-- Sección para tipo de fotografía y carga de imagen -->
                         <div id="photo-section">
                             <div class="mb-3">
-                                <label for="FotoRetrato" class="form-label">Añadir una Foto de su cara</label>
-                                <input class="form-control" type="file" id="FotoRetrato" name ="FotoRetrato" accept="image/*">
+                                <label for="FotoPersona" class="form-label">Añadir una Foto de su cara</label>
+                                <input class="form-control" type="file" id="FotoPersona" name ="FotoPersona" accept="image/*">
                                 <small class="form-text text-muted">Solo se permiten imágenes (JPEG, PNG, GIF, etc.).</small>
 
                             </div>
@@ -104,29 +111,25 @@
                                 </div>
                                 <div>
 
-                                <div class="mb-3">
-                                        <label for="colorSelect" class="form-label">Selecciona la marca del automovil</label>
-                                        
-                                        <select id="MarcaAutomovil" class="form-select">
-                                            <!-- Opciones se llenarán con JavaScript -->
+                                    <div class="mb-3">
+                                        <label for="marcaSelect" class="form-label">Selecciona la marca del automóvil</label>
+                                        <select id="MarcaAutomovil" class="form-select" name="MarcaAutomovil">
                                             <option value="" disabled selected>Seleccione una marca</option>
-
-                                        </select>                                     
-                                </div>
-
+                                            @foreach ($Marcas as $marca)
+                                                <option value="{{$marca['idMarca']}}">{{$marca['nombreMarca']}}</option>
+                                            @endforeach
+                                        </select>                                    
+                                    </div>
                                 <div class="mb-3">
-                                        <label for="colorSelect" class="form-label">Selecciona el modelo del automovil</label>
-                                        
-                                        <select id="MarcaAutomovil" class="form-select">
-                                            <!-- Opciones se llenarán con JavaScript -->
-                                            <option value="" disabled selected>Seleccione un modelo</option>
-
-                                        </select>                                     
+                                    <label for="modeloSelect" class="form-label">Selecciona el modelo del automóvil</label>
+                                    <select id="ModeloAutomovil" class="form-select" name="ModeloAutomovil">
+                                        <option value="" disabled selected>Seleccione un modelo</option>
+                                    </select>                                     
                                 </div>
                                     <div class="mb-3">
                                         <label for="colorSelect" class="form-label">Selecciona un color</label>
                                         
-                                        <select id="colorSelect" class="form-select">
+                                        <select id="colorSelect" class="form-select" name="colorSelect">
                                             <!-- Opciones se llenarán con JavaScript -->
                                             <option value="" disabled selected>Seleccione un color</option>
 
@@ -144,12 +147,12 @@
                                     <input type="number"  class="form-control" id="numPuertas" name="numPuertas" min="1" max="5" placeholder="Numero de puertas entre 1 y 5" required>
                                     
                                     <div>
-                                            <label for="numAsientos">Numero de Puertas</label>
+                                            <label for="numAsientos">Numero de Asientos</label>
                                             <input type="number"  class="form-control" id="numAsientos" name="numAsientos" min="1" max="6" placeholder="Numero de Asientos entre 1 y 6" required>
                                     </div>
 
                                     <div>
-                                            <label for="anio">Numero de Puertas</label>
+                                            <label for="anio">Año Vehiculo</label>
                                             <input type="number" class="form-control" id="anio" name="anio" min="2014" max="2024" placeholder="Año entre 2014 y 2024" required>
                                     </div>
                                 </div>
@@ -157,8 +160,8 @@
                                 <!-- Sección para tipo de fotografía y carga de imagen -->
                                 <div id="photo-section">
                                     <div class="mb-3">
-                                        <label for="photoUpload1" class="form-label">Añadir una Foto del vehiculo</label>
-                                        <input class="form-control" type="file" name="FotoVehiculo" id="FotoVehiculo" accept="image/*">
+                                        <label for="FotoVehiculo" class="form-label">Añadir una Foto del vehiculo</label>
+                                        <input type="file" class="form-control"  name="FotoVehiculo" id="FotoVehiculo" accept="image/*">
                                         <small class="form-text text-muted">Solo se permiten imágenes (JPEG, PNG, GIF, etc.).</small>
 
                                     </div>
@@ -186,7 +189,28 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/js/ScriptFormConductor.js"></script>
-     
+    <script>
+        // Suponiendo que tienes una variable de PHP que contiene los modelos
+        const modelos = @json($modelos);
+    
+        document.getElementById('MarcaAutomovil').addEventListener('change', function() {
+            const marcaId = this.value;
+            const modeloSelect = document.getElementById('ModeloAutomovil');
+            
+            // Limpiar las opciones actuales
+            modeloSelect.innerHTML = '<option value="" disabled selected>Seleccione un modelo</option>';
+            
+            // Filtrar y agregar los modelos correspondientes
+            modelos.forEach(modelo => {
+                if (modelo.modeloMarca == marcaId) {
+                    const option = document.createElement('option');
+                    option.value = modelo.idModelo;
+                    option.textContent = modelo.nombreModelo;
+                    modeloSelect.appendChild(option);
+                }
+            });
+        });
+    </script>
     
 
 
