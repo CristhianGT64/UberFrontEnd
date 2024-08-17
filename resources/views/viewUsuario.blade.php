@@ -133,9 +133,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="#"><i class="bi bi-house-door"></i> Inicio</a>
                         </li>
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a class="nav-link" href="#"><i class="bi bi-info-circle"></i> Acerca de nosotros</a>
-                        </li>
+                        </li> --}}
                         <li class="nav-item">
                             <a class="nav-link" href="#"><i class="bi bi-car-front"></i> Viajes</a>
                         </li>
@@ -147,6 +147,7 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{route('Administrador.cambiarModo')}}"><i class="bi bi-building"></i> Administrar</a>
                                 </li>
+                                @break
                              @endif
                         @endforeach
 
@@ -193,34 +194,6 @@
           @endif
 
         <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-            </div>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img src="https://images.unsplash.com/photo-1584467735873-a80a4cb5d304" class="d-block w-100" alt="First slide">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>Transporte confiable</h5>
-                        <p>Servicios de transporte rápidos y confiables a tu alcance.</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="https://example.com/imagen-transporte.jpg" class="d-block w-100" alt="Second slide">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>Paseos rápidos</h5>
-                        <p>Obtenga un viaje en minutos con nuestras opciones de servicio rápido.</p>
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <img src="https://images.unsplash.com/photo-1541748715189-9e4f2c39a2b3" class="d-block w-100" alt="Third slide">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h5>Cobertura</h5>
-                        <p>Disponible en la ciudad de Tegucigalpa.</p>
-                    </div>
-                </div>
-            </div>
             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Previous</span>

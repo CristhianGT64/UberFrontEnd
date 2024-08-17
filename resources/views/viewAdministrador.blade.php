@@ -144,7 +144,7 @@
             <a href="#"><i class="fas fa-car"></i> Ver Conductores</a>
             <a href="#"><i class="fas fa-users"></i> Ver Usuarios</a>
             <a href="#"><i class="fas fa-route"></i> Ver Viajes</a>
-            <a href="#"><i class="fas fa-arrow-left"></i> Salir de modo administrador</a>
+            <a href="{{route('usuario.menuCliente')}}"><i class="fas fa-arrow-left"></i> Salir de modo administrador</a>
         </nav>
         
         <main class="content" id="content">
@@ -173,10 +173,10 @@
                                     {{-- <td></td> --}}
                                     <td>{{$solicitud['correo']}}</td>
                                     <td>
-                                    <a href="#" name="AceptarSolicitud" class="btn btn-success btn-sm AceptarSolicitud" data-bs-toggle="modal" data-bs-target=".exampleModal" title="Aceptar">
+                                    <a href="{{$solicitud['idSolicitud']}}" name="AceptarSolicitud" class="btn btn-success btn-sm AceptarSolicitud" data-bs-toggle="modal" data-bs-target=".exampleModal" title="Aceptar">
                                         <i class="fas fa-check"></i>
                                     </a>
-                                    <a href="#" name="RechzarSolicitud" class="btn btn-danger btn-sm RechzarSolicitud" data-bs-toggle="modal" data-bs-target=".exampleModal" title="Rechazar">
+                                    <a href="{{$solicitud['idSolicitud']}}" name="RechzarSolicitud" class="btn btn-danger btn-sm RechzarSolicitud" data-bs-toggle="modal" data-bs-target=".exampleModal" title="Rechazar">
                                         <i class="fas fa-times"></i>
                                     </a>
                                         <a href="" name="VerInformacion" class="btn btn-info btn-sm VerInformacion"  data-bs-placement="top" title="Ver Más" data-bs-toggle="modal" data-bs-target=".viewSolicitud"
@@ -196,13 +196,13 @@
                                         data-modelo="{{ $solicitud['nombreModelo'] }}"
                                         @foreach ($fotografiasSolicitud as $foto)
                                             @if ($foto['idSolicitud'] == ($solicitud['idSolicitud']) )
-                                                @if ($foto['idTipoFotografia'] == 4)
+                                                @if ($foto['idTipoFotografia'] == 2)
                                                     data-foto-retrato="{{ $foto['ubicacion'] }}"
                                                 @endif
-                                                @if ($foto['idTipoFotografia'] == 2)
+                                                @if ($foto['idTipoFotografia'] == 3)
                                                     data-foto-licencia="{{ $foto['ubicacion'] }}"  
                                                 @endif
-                                                @if ($foto['idTipoFotografia'] == 3)
+                                                @if ($foto['idTipoFotografia'] == 4)
                                                     data-foto-auto="{{ $foto['ubicacion'] }}"
                                                 @endif 
                                             @endif
