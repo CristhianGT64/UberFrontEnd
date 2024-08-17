@@ -11,7 +11,6 @@ class FacturaController extends Controller
 
         $NumeroFactura = Http::get('http://localhost:8080/api/Facturas/NumeroFactura')->json();
 
-
         return redirect('/SolicitudConductor/Solictud');
 
     }
