@@ -4,6 +4,7 @@ use App\Http\Controllers\AdministradoresController;
 use App\Http\Controllers\ConductorController;
 use App\Http\Controllers\SolicitudConductorController;
 use App\Http\Controllers\UsuariosController;
+use App\Http\Controllers\FacturaController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/login', function () {
@@ -38,7 +39,5 @@ Route::post('/SolicitudConductor/GuardarSolicitud', [SolicitudConductorControlle
 Route::get('/Administradores/CambioModo', [AdministradoresController::class, 'modoAdministrador'])->name('Administrador.cambiarModo');
 Route::get('/Administradores/menuAdministrador', [AdministradoresController::class, 'menuAdministrador'])->name('Administrador.menuAdministrador');
 
-
-
-
-
+/* Factura */
+Route::get('/Factura/RenderizarFactura', [FacturaController::class, 'RenderizarFactura'])->name('Factura.RenderizarFactura');
