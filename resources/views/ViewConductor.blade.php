@@ -233,7 +233,7 @@
   </div>
 
   <!-- Main Content -->
-  <div class="mainView"> mainView
+  <div class="mainView"> 
     <h1>Bienvenido, {{$_SESSION['nombreCompleto']}}r</h1>
     <p>Aquí puedes gestionar tus viajes, tu perfil y más.</p>
   </div>
