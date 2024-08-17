@@ -307,7 +307,7 @@
                     <h5 class="modal-title" id="exampleModalLabel">Título del Modal</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form >
+                <form action="" >
                     <div class="modal-body">
                         <textarea class="form-control observacion" id="observaciones" rows="10" style="width: 100%;"></textarea>
                     </div>
