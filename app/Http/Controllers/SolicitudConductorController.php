@@ -91,12 +91,43 @@ class SolicitudConductorController extends Controller
 
         return $this->Solicitud();
 
-
-        
-
-        
-
-
     }
+
+    public function decisionSolicitud(Request $request){
+
+        session_start();
+
+        // echo('<pre>');
+        // var_dump($_SESSION['idUsuario']);
+        // echo('<pre>');
+
+        // exit;
+
+
+        if($request->accion == "aceptar"){
+            Http::post('http://localhost:8080/api/solicitus/AutorizarSolicitud',[
+                "administrador"=>[
+                    "idAdministrador"=>$_SESSION['idUsuario']
+                ],
+                "solicitud"=>[
+                    "idSolicitud"=>$request->solicitud
+                ],
+                "observaciones"=>$request->observaciones
+            ]);
+        }else{
+            Http::post('http://localhost:8080/api/solicitus/denegarSolictud',[
+                "administrador"=>[
+                    "idAdministrador"=>$_SESSION['idUsuario']
+                ],
+                "solicitud"=>[
+                    "idSolicitud"=>$request->solicitud
+                ],
+                "observaciones"=>$request->observaciones
+            ]);
+        }
+
+         return redirect('/Administradores/menuAdministrador');
+
+        }
 
 }

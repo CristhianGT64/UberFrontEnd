@@ -173,10 +173,10 @@
                                     {{-- <td></td> --}}
                                     <td>{{$solicitud['correo']}}</td>
                                     <td>
-                                    <a href="{{$solicitud['idSolicitud']}}" name="AceptarSolicitud" class="btn btn-success btn-sm AceptarSolicitud" data-bs-toggle="modal" data-bs-target=".exampleModal" title="Aceptar">
+                                    <a href="{{$solicitud['idSolicitud']}}" data-id="{{$solicitud['idSolicitud']}}" name="AceptarSolicitud" class="btn btn-success btn-sm AceptarSolicitud" data-bs-toggle="modal" data-bs-target=".exampleModal" title="Aceptar">
                                         <i class="fas fa-check"></i>
                                     </a>
-                                    <a href="{{$solicitud['idSolicitud']}}" name="RechzarSolicitud" class="btn btn-danger btn-sm RechzarSolicitud" data-bs-toggle="modal" data-bs-target=".exampleModal" title="Rechazar">
+                                    <a href="{{$solicitud['idSolicitud']}}" data-id="{{$solicitud['idSolicitud']}}" name="RechzarSolicitud" class="btn btn-danger btn-sm RechzarSolicitud" data-bs-toggle="modal" data-bs-target=".exampleModal" title="Rechazar">
                                         <i class="fas fa-times"></i>
                                     </a>
                                         <a href="" name="VerInformacion" class="btn btn-info btn-sm VerInformacion"  data-bs-placement="top" title="Ver Más" data-bs-toggle="modal" data-bs-target=".viewSolicitud"
@@ -307,13 +307,16 @@
                     <h5 class="modal-title" id="exampleModalLabel">Título del Modal</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="" >
+                <form action="{{route('solicitud.decison')}}"  method="POST">
+                     @csrf
                     <div class="modal-body">
-                        <textarea class="form-control observacion" id="observaciones" rows="10" style="width: 100%;"></textarea>
+                        <textarea class="form-control observacion" id="observaciones" name="observaciones" rows="10" style="width: 100%;"></textarea>
+                        <input type="hidden" id="solicitud" name="solicitud">
+                        <input type="hidden" id="accion" name="accion">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                        <button type="button" class="btn btn-primary">Confirmar</button>
+                        <input type="submit" class="btn btn-primary" value="confirmar">
                     </div>
                 </form>
                 
@@ -483,10 +486,36 @@
             new bootstrap.Tooltip(element);
         });
 
+        document.querySelectorAll('.AceptarSolicitud').forEach(button => {
+            button.addEventListener('click', function() {
+                // Obtener los atributos de datos del botón
+                const idSolicitud = this.getAttribute('data-id');
+                const accion = 'aceptar';
+                console.log(idSolicitud)
+                document.getElementById('solicitud').value = idSolicitud;
+                document.getElementById('accion').value = accion;
+
+            });
+        });
+
+        document.querySelectorAll('.RechzarSolicitud').forEach(button => {
+            button.addEventListener('click', function() {
+                // Obtener los atributos de datos del botón
+                const idSolicitud = this.getAttribute('data-id');
+                const accion = 'rechazar';
+                console.log(idSolicitud)
+                document.getElementById('solicitud').value = idSolicitud;
+                document.getElementById('accion').value = accion;
+
+            });
+        });
+
+
 
         document.querySelectorAll('.VerInformacion').forEach(button => {
             button.addEventListener('click', function() {
                 // Obtener los atributos de datos del botón
+                const idSolicitud = this.getAttribute('data-id');
                 const nombre = this.getAttribute('data-nombre');
                 const correo = this.getAttribute('data-correo');
                 const telefono = this.getAttribute('data-telefono');
@@ -505,6 +534,7 @@
                 const fotoAuto = this.getAttribute('data-foto-auto');
     
                 // Actualizar los campos de la modal
+                document.getElementById('solicitud').textContent = idSolicitud;
                 document.getElementById('nombreCompletoConductor').textContent = nombre;
                 document.getElementById('CorreoConductor').textContent = correo;
                 document.getElementById('TelefonoConductor').textContent = telefono;

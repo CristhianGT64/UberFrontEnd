@@ -20,5 +20,12 @@ class ConductorController extends Controller
         return redirect('/SolicitudConductor/Solictud');
 
     }
+
+    public function menuConductor(){
+        session_start();
+
+        return view('viewConductor');
+
+    }
     
 }

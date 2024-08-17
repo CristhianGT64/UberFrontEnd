@@ -1,5 +1,14 @@
 <!DOCTYPE html>
 <html lang="es">
+
+@php
+
+if (empty($_SESSION)) {
+    header('Location: /login');
+    exit();
+}
+@endphp
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -66,7 +75,8 @@
                 Solicita tu Viaje
             </div>
             <div class="card-body">
-                <form id="locationForm">
+                <form action="{{route('solicitud.solictarViaje')}}" method="POST" id="locationForm">
+                    @csrf
                     <div class="mb-3">
                         <label for="origen" class="form-label">Origen</label>
                         <div class="input-group">
@@ -89,13 +99,13 @@
                         </div>
                     </div>
                     <div id="map" class="mb-3"></div>
-                    <div class="d-grid">
-                        <button type="button" id="submitButton" class="btn btn-primary">Solicitar Conductor</button>
-                    </div>
                     <input type="hidden" name="latitudOrigen" id="latitudOrigen">
                     <input type="hidden" name="longitudOrigen" id="longitudOrigen">
                     <input type="hidden" name="latitudDestino" id="latitudDestino">
                     <input type="hidden" name="longitudDestino" id="longitudDestino">
+                    <div class="d-grid">
+                        <input type="submit" id="submitButton" value="Solicitar Conductor" class="btn btn-primary">
+                    </div>
                 </form>
             </div>
         </div>

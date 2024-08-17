@@ -137,7 +137,7 @@
                             <a class="nav-link" href="#"><i class="bi bi-info-circle"></i> Acerca de nosotros</a>
                         </li> --}}
                         <li class="nav-item">
-                            <a class="nav-link" href="#"><i class="bi bi-car-front"></i> Viajes</a>
+                            <a class="nav-link" href="{{route('solicitud.menuCliente')}}"><i class="bi bi-car-front"></i> Viajes</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{route('conductor.cambiarModo')}}"><i class="bi bi-person-vcard"></i> Conducir</a>

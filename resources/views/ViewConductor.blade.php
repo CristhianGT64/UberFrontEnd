@@ -1,5 +1,12 @@
 <!DOCTYPE html>
 <html lang="es">
+  @php
+
+  if (empty($_SESSION)) {
+      header('Location: /login');
+      exit();
+  }
+@endphp
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -181,7 +188,7 @@
     <h4 class="text-center mb-4">Mi Perfil</h4>
     <div class="text-center mb-4">
       <img src="https://via.placeholder.com/100" alt="Perfil" class="profile-picture">
-      <h5>Nombre del Conductor</h5>
+      <h5>{{$_SESSION['nombreCompleto']}}</h5>
       <div class="d-flex align-items-center justify-content-center">
         <label class="form-check form-switch">
           <input class="form-check-input" type="checkbox" id="statusSwitch">
@@ -225,7 +232,7 @@
 
   <!-- Main Content -->
   <div class="main-content">
-    <h1>Bienvenido, Nombre del Conductor</h1>
+    <h1>Bienvenido, {{$_SESSION['nombreCompleto']}}r</h1>
     <p>Aquí puedes gestionar tus viajes, tu perfil y más.</p>
   </div>
 
