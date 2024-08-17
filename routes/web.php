@@ -5,6 +5,7 @@ use App\Http\Controllers\ConductorController;
 use App\Http\Controllers\SolicitudConductorController;
 use App\Http\Controllers\UsuariosController;
 use App\Http\Controllers\viajesController;
+use App\Http\Controllers\FacturaController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/login', function () {
@@ -48,8 +49,5 @@ Route::get('/viajes/menuaCliente', [viajesController::class, 'menuCliente'])->na
 Route::post('/viajes/solictarViaje', [viajesController::class, 'solicitarViaje'])->name('solicitud.solictarViaje');
 Route::get('/viajes/viaje', [viajesController::class, 'verViaje'])->name('solicitud.viaje');
 
-
-
-
-
-
+/* Factura */
+Route::get('/Factura/RenderizarFactura', [FacturaController::class, 'RenderizarFactura'])->name('Factura.RenderizarFactura');

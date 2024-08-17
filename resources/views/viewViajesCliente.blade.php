@@ -42,13 +42,6 @@
         .refresh-icon {
             font-size: 1.5rem;
             cursor: pointer;
-            display: flex;
-            align-items: center;
-        }
-        .refresh-icon .return-icon {
-            font-size: 1.25rem;
-            color: #6c757d;
-            margin-left: 10px;
         }
         .star-rating {
             display: flex;
@@ -101,6 +94,7 @@
         .alert.error {
             display: block;
         }
+
         /* Estilos para el icono de regresar */
         .return-icon {
             font-size: 1.25rem;
@@ -113,10 +107,11 @@
         <div class="card">
             <div class="card-header bg-warning text-white d-flex justify-content-between">
                 <span>Mis viajes</span>
-                <span class="refresh-icon">
-                    <i class="bi bi-arrow-counterclockwise" onclick="location.reload()"></i>
-                    <a class="bi bi-arrow-left-circle return-icon" ></a> <!-- Aqui se coloca el link de pagina principal para los usuarios -->
+                <span  class="refresh-icon">
+                        <i onclick="location.reload()" class=" bi bi-arrow-counterclockwise"></i>
+                        <a class="bi bi-arrow-left-circle return-icon" href="#" ></a>
                 </span>
+
             </div>
             <div class="card-body">
                 <div class="tab-content" id="myTabContent">
@@ -129,7 +124,9 @@
                                 <p class="card-text">dsddddddddddddddddddddddddd<br>Su oferta: LPS. 60,00 </p>
                                 <div id="map" style="height: 200px; background-color: #e9ecef;"></div>
                                 <div class="d-flex justify-content-between mt-3">
+
                                     <!-- En progreso: Aqui se hacer la logica e interracion entre el conducto y cliente relacionado al viaje -->
+
                                     <button class="btn btn-danger btn-custom" style="width: 100%;" id="cancelarViaje">CANCELAR SOLICITUD</button>
                                 </div>
                             </div>
@@ -169,19 +166,19 @@
                 <div class="tab-container">
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item" role="presentation">
-                            <span class="nav-link active" id="progreso-tab" data-bs-toggle="tab" data-bs-target="#progreso" type="button" role="tab" aria-controls="progreso" aria-selected="true">
+                            <button class="nav-link active" id="progreso-tab" data-bs-toggle="tab" data-bs-target="#progreso" type="button" role="tab" aria-controls="progreso" aria-selected="true">
                                 <i class="bi bi-clock-history"></i> En progreso
-                            </span>
+                            </button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <span class="nav-link" id="calificar-tab" data-bs-toggle="tab" data-bs-target="#calificar" type="button" role="tab" aria-controls="calificar" aria-selected="false">
+                            <button class="nav-link" id="calificar-tab" data-bs-toggle="tab" data-bs-target="#calificar" type="button" role="tab" aria-controls="calificar" aria-selected="false">
                                 <i class="bi bi-star-fill"></i> A calificar
-                            </span>
+                            </button>
                         </li>
                         <li class="nav-item" role="presentation">
-                            <span class="nav-link" id="archivados-tab" data-bs-toggle="tab" data-bs-target="#archivados" type="button" role="tab" aria-controls="archivados" aria-selected="false">
+                            <button class="nav-link" id="archivados-tab" data-bs-toggle="tab" data-bs-target="#archivados" type="button" role="tab" aria-controls="archivados" aria-selected="false">
                                 <i class="bi bi-archive-fill"></i> Archivados
-                            </span>
+                            </button>
                         </li>
                     </ul>
                 </div>
@@ -194,35 +191,75 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="ratingModalLabel">Calificar viaje</h5>
+                    <h5 class="modal-title" id="ratingModalLabel">Califica tu viaje</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <form>
+                <form id="ratingForm">
+                    <div class="modal-body">
+                        <!-- Calificación con estrellas -->
                         <div class="star-rating">
-                            <input type="radio" id="star5" name="rating" value="5" />
-                            <label for="star5" title="5 estrellas">★</label>
-                            <input type="radio" id="star4" name="rating" value="4" />
-                            <label for="star4" title="4 estrellas">★</label>
-                            <input type="radio" id="star3" name="rating" value="3" />
-                            <label for="star3" title="3 estrellas">★</label>
-                            <input type="radio" id="star2" name="rating" value="2" />
-                            <label for="star2" title="2 estrellas">★</label>
-                            <input type="radio" id="star1" name="rating" value="1" />
-                            <label for="star1" title="1 estrella">★</label>
+                            <input type="radio" id="star5" name="rating" value="5"><label for="star5" title="5 estrellas">&#9733;</label>
+                            <input type="radio" id="star4" name="rating" value="4"><label for="star4" title="4 estrellas">&#9733;</label>
+                            <input type="radio" id="star3" name="rating" value="3"><label for="star3" title="3 estrellas">&#9733;</label>
+                            <input type="radio" id="star2" name="rating" value="2"><label for="star2" title="2 estrellas">&#9733;</label>
+                            <input type="radio" id="star1" name="rating" value="1"><label for="star1" title="1 estrella">&#9733;</label>
                         </div>
-                        <textarea class="form-control mt-3" rows="3" placeholder="Deja un comentario..."></textarea>
-                        <button type="submit" class="btn btn-primary mt-3">Enviar calificación</button>
-                    </form>
-                </div>
+                        <div class="rating-display" id="ratingDisplay">0 estrellas</div>
+                        <!-- Campo oculto para almacenar el numero de la calificación, este input es que se envia al BackEnd-->
+                        <input type="hidden" id="calificacion" name="calificacion" value="0">
+                        <!-- Campo de comentario -->
+                        <div class="form-group mt-3">
+                            <label for="comentario">Comentario:</label>
+                            <textarea class="form-control" id="comentario" name="comentario" rows="4" placeholder="Escribe tu comentario aquí..."></textarea>
+                        </div>
+                        <div class="alert alert-success mt-3" id="successMessage">¡Calificación enviada exitosamente!</div>
+                        <div class="alert alert-danger mt-3" id="errorMessage">Hubo un error al enviar la calificación. Intenta nuevamente.</div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="submit" class="btn btn-primary">Enviar Calificación</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.querySelectorAll('.star-rating input').forEach(input => {
+            input.addEventListener('change', function() {
+                const rating = this.value;
+                document.getElementById('ratingDisplay').textContent = `${rating} estrella${rating > 1 ? 's' : ''}`;
+                document.getElementById('calificacion').value = rating;
+            });
+        });
+
+        document.getElementById('ratingForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            
+            const rating = document.getElementById('calificacion').value;
+            const comentario = document.getElementById('comentario').value;
+
+            // Validar que se haya seleccionado al menos 1 estrella
+            if (rating < 1) {
+                document.getElementById('successMessage').style.display = 'none';
+                document.getElementById('errorMessage').style.display = 'block';
+                document.getElementById('errorMessage').textContent = 'Por favor, selecciona al menos 1 estrella antes de enviar.';
+                return;
+            }
+
+            // Simulación de éxito
+           // document.getElementById('successMessage').style.display = 'block';
+            //document.getElementById('errorMessage').style.display = 'none';
+            // También podrías ocultar el modal aquí si el envío es exitoso.
+           // setTimeout(() => {
+             //   const modal = bootstrap.Modal.getInstance(document.getElementById('ratingModal'));
+            //    modal.hide();
+            //}, 2000);
+        });
+    </script>
 </body>
 </html>
-
 
 
 
