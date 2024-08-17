@@ -202,15 +202,17 @@
       <li class="nav-item">
         <a class="nav-link" href="#"><i class="fas fa-envelope"></i> Solicitudes Pendientes</a>
       </li>
+      <!-- 
       <li class="nav-item">
         <a class="nav-link" href="#"><i class="fas fa-check"></i> Solicitudes Aceptadas</a>
-      </li>
+      </li> 
+
       <li class="nav-item">
         <a class="nav-link" href="#"><i class="fas fa-times"></i> Cancelados</a>
-      </li>
+      </li> -->
       <li class="nav-item">
         <a class="nav-link" href="#"><i class="fas fa-ban"></i> Declinados</a>
-      </li>
+      </li>  
       <li class="nav-item">
         <a class="nav-link" href="#"><i class="fas fa-car-side"></i> Información del Vehículo</a>
       </li>
