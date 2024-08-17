@@ -81,7 +81,7 @@
     }
 
     /* Main Content Styles */
-    .main-content {
+    .mainView {
       margin-right: 250px;
       padding: 2rem;
       background: linear-gradient(to bottom right, #dee2e6, #f8f9fa);
@@ -96,13 +96,13 @@
       color: #343a40;
     }
 
-    .main-content h1 {
+    .mainView h1 {
       font-size: 2.5rem;
       color: #007bff;
       margin-bottom: 1rem;
     }
 
-    .main-content p {
+    .mainView p {
       font-size: 1.25rem;
       color: #6c757d;
     }
@@ -160,7 +160,7 @@
         border-left: none;
         border-bottom: 2px solid #495057;
       }
-      .main-content {
+      .mainView {
         margin-right: 0;
         padding: 1rem;
       }
@@ -233,7 +233,7 @@
   </div>
 
   <!-- Main Content -->
-  <div class="main-content">
+  <div class="mainView"> mainView
     <h1>Bienvenido, {{$_SESSION['nombreCompleto']}}r</h1>
     <p>Aquí puedes gestionar tus viajes, tu perfil y más.</p>
   </div>

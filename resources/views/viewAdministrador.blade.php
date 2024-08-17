@@ -142,8 +142,8 @@
             <h4>Menú de Administrador <span class="close-btn" onclick="toggleMenu()"><i class="fas fa-times"></i></span></h4>
             <a href="#" id="viewRequestsLink" onclick="showRequestsView()"><i class="fas fa-check-circle"></i> Aceptar Solicitudes</a>
             <a href="#" onclick="showRequestsViewConductores()"><i class="fas fa-car"></i> Ver Conductores</a>
-            <a href="#"><i class="fas fa-users"></i> Ver Usuarios</a>
-            <a href="#"><i class="fas fa-route"></i> Ver Viajes</a>
+            <a href="#" onclick="showRequestsViewUsuarios()"><i class="fas fa-users"></i> Ver Usuarios</a>
+            <a href="#" onclick="showRequestsViewViajes()"><i class="fas fa-route"></i> Ver Viajes</a>
             <a href="{{route('usuario.menuCliente')}}"><i class="fas fa-arrow-left"></i> Salir de modo administrador</a>
         </nav>
         
@@ -230,7 +230,7 @@
                                     <th>ID</th>
                                     <th>Nombre</th>
                                     <th>Viajes Realizados</th>
-                                    <th>Estado</th>
+                                    <th>Disponible</th>
                                  
                                 </tr>
                             </thead>
@@ -248,47 +248,109 @@
                         </table>
                     </div>
                 </div>
+
+                <div class="hidden" id="requestsViewUsuarios">
+                    <button class="btn btn-secondary mb-3" onclick="showMainViewUsuarios()">Regresar</button>
+                    <h2>Lista de conductores</h2>
+                    <div class="table-responsive">
+                        <table id ="VerConductores" name= "verConductores" class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nombre</th>
+                                    <th>Correo</th>
+                                    <th>Contraseña</th>
+                                    <th>Visible</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td> 
+                                    <td></td>
+                                    <td></td>   
+                                </tr>
+                          
+                                
+                                <!-- Agrega más filas aquí -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="hidden" id="requestsViewViajes">
+                    <button class="btn btn-secondary mb-3" onclick="showMainViewViajes()">Regresar</button>
+                    <h2>Lista de conductores</h2>
+                    <div class="table-responsive">
+                        <table id ="VerConductores" name= "verConductores" class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nombre del Cliente</th>
+                                    <th>Conductor</th>
+                                    <th>Fecha Inicio</th>
+                                    <th>Fecha Fin</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td> 
+                                    <td></td>
+                                    <td></td>   
+                                </tr>
+                          
+                                
+                                <!-- Agrega más filas aquí -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
                 <!-- Vista principal -->
                 <div id="mainView">
-                <h2>Bienvenido, Administrador</h2>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="card mb-4">
-                                <div class="card-body">
-                                    <h5 class="card-title">Aceptar Solicitudes</h5>
-                                    <p class="card-text">Gestiona las solicitudes de nuevos conductores o usuarios.</p>
-                                    <button class="btn btn-primary" onclick="showRequestsView()">Ir a Solicitudes</button>
+                    <h2>Bienvenido, Administrador</h2>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="card mb-4">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Aceptar Solicitudes</h5>
+                                        <p class="card-text">Gestiona las solicitudes de nuevos conductores o usuarios.</p>
+                                        <button class="btn btn-primary" onclick="showRequestsView()">Ir a Solicitudes</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card mb-4">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Ver Conductores</h5>
+                                        <p class="card-text">Revisa la información y el estado de los conductores.</p>
+                                        <button class="btn btn-primary" onclick="showRequestsViewConductores()">Ver Conductores</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card mb-4">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Ver Usuarios</h5>
+                                        <p class="card-text">Administra la información de los usuarios registrados.</p>
+                                        <a onclick="showRequestsViewUsuarios()" href="#" class="btn btn-primary">Ir a Usuarios</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card mb-4">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Ver Viajes</h5>
+                                        <p class="card-text">Consulta y gestiona los viajes realizados.</p>
+                                        <a onclick="showRequestsViewViajes()" href="#" class="btn btn-primary">Ir a Viajes</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="card mb-4">
-                                <div class="card-body">
-                                    <h5 class="card-title">Ver Conductores</h5>
-                                    <p class="card-text">Revisa la información y el estado de los conductores.</p>
-                                    <button class="btn btn-primary" onclick="showRequestsViewConductores()">Ver Conductores</button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="card mb-4">
-                                <div class="card-body">
-                                    <h5 class="card-title">Ver Usuarios</h5>
-                                    <p class="card-text">Administra la información de los usuarios registrados.</p>
-                                    <a href="#" class="btn btn-primary">Ir a Usuarios</a>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="card mb-4">
-                                <div class="card-body">
-                                    <h5 class="card-title">Ver Viajes</h5>
-                                    <p class="card-text">Consulta y gestiona los viajes realizados.</p>
-                                    <a href="#" class="btn btn-primary">Ir a Viajes</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </main>
@@ -482,6 +544,27 @@
             document.getElementById('requestsViewConductores').classList.add('hidden');
         }
 
+        //Boton de ver usuarios
+        function showRequestsViewUsuarios() {
+            document.getElementById('mainView').classList.add('hidden');
+            document.getElementById('requestsViewUsuarios').classList.remove('hidden');
+        }
+
+        function showMainViewUsuarios() {
+            document.getElementById('mainView').classList.remove('hidden');
+            document.getElementById('requestsViewUsuarios').classList.add('hidden');
+        }
+
+        //Boton para ver viajes
+        function showRequestsViewViajes() {
+            document.getElementById('mainView').classList.add('hidden');
+            document.getElementById('requestsViewViajes').classList.remove('hidden');
+        }
+
+        function showMainViewViajes() {
+            document.getElementById('mainView').classList.remove('hidden');
+            document.getElementById('requestsViewViajes').classList.add('hidden');
+        }
         document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(element => {
             new bootstrap.Tooltip(element);
         });
