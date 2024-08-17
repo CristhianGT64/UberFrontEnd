@@ -141,7 +141,7 @@
         <nav class="sidebar" id="sidebar">
             <h4>Menú de Administrador <span class="close-btn" onclick="toggleMenu()"><i class="fas fa-times"></i></span></h4>
             <a href="#" id="viewRequestsLink" onclick="showRequestsView()"><i class="fas fa-check-circle"></i> Aceptar Solicitudes</a>
-            <a href="#"><i class="fas fa-car"></i> Ver Conductores</a>
+            <a href="#" onclick="showRequestsViewConductores()"><i class="fas fa-car"></i> Ver Conductores</a>
             <a href="#"><i class="fas fa-users"></i> Ver Usuarios</a>
             <a href="#"><i class="fas fa-route"></i> Ver Viajes</a>
             <a href="{{route('usuario.menuCliente')}}"><i class="fas fa-arrow-left"></i> Salir de modo administrador</a>
@@ -218,6 +218,36 @@
                         </table>
                     </div>
                 </div>
+
+
+                <div class="hidden" id="requestsViewConductores">
+                    <button class="btn btn-secondary mb-3" onclick="showMainViewConductores()">Regresar</button>
+                    <h2>Lista de conductores</h2>
+                    <div class="table-responsive">
+                        <table id ="VerConductores" name= "verConductores" class="table table-bordered">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nombre</th>
+                                    <th>Viajes Realizados</th>
+                                    <th>Estado</th>
+                                 
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td> 
+                                    <td></td>   
+                                </tr>
+                          
+                                
+                                <!-- Agrega más filas aquí -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
                 <!-- Vista principal -->
                 <div id="mainView">
                 <h2>Bienvenido, Administrador</h2>
@@ -236,7 +266,7 @@
                                 <div class="card-body">
                                     <h5 class="card-title">Ver Conductores</h5>
                                     <p class="card-text">Revisa la información y el estado de los conductores.</p>
-                                    <a href="#" class="btn btn-primary">Ir a Conductores</a>
+                                    <button class="btn btn-primary" onclick="showRequestsViewConductores()">Ver Conductores</button>
                                 </div>
                             </div>
                         </div>
@@ -277,13 +307,16 @@
                     <h5 class="modal-title" id="exampleModalLabel">Título del Modal</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="modal-body">
-                    <textarea class="form-control observacion" id="observaciones" rows="10" style="width: 100%;"></textarea>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                    <button type="button" class="btn btn-primary">Confirmar</button>
-                </div>
+                <form action="" >
+                    <div class="modal-body">
+                        <textarea class="form-control observacion" id="observaciones" rows="10" style="width: 100%;"></textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-primary">Confirmar</button>
+                    </div>
+                </form>
+                
             </div>
         </div>
     </div>
@@ -424,7 +457,7 @@
             sidebar.classList.toggle('active');
             content.style.marginLeft = sidebar.classList.contains('active') ? '250px' : '0';
         }
-
+        //Boton de solicitudes
         function showRequestsView() {
             document.getElementById('mainView').classList.add('hidden');
             document.getElementById('requestsView').classList.remove('hidden');
@@ -433,6 +466,17 @@
         function showMainView() {
             document.getElementById('mainView').classList.remove('hidden');
             document.getElementById('requestsView').classList.add('hidden');
+        }
+
+        //Boton de ver conductores
+        function showRequestsViewConductores() {
+            document.getElementById('mainView').classList.add('hidden');
+            document.getElementById('requestsViewConductores').classList.remove('hidden');
+        }
+
+        function showMainViewConductores() {
+            document.getElementById('mainView').classList.remove('hidden');
+            document.getElementById('requestsViewConductores').classList.add('hidden');
         }
 
         document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(element => {
