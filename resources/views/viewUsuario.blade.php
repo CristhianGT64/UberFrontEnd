@@ -109,6 +109,11 @@
         .footer a:hover {
             color: #00aaff;
         }
+
+        .bi bi-taxi-front-fill{
+            width: 20px;
+            height: 20px;
+        }
     </style>
 </head>
 
@@ -117,7 +122,7 @@
         <nav class="navbar navbar-expand-lg navbar-dark">
             <div class="container">
                 <a class="navbar-brand" href="#">
-                    <img src="https://via.placeholder.com/50" alt="Logo"> EasyTaxi
+                <i class="bi bi-taxi-front-fill"></i>  EasyTaxi
                 </a>
                 <a class="btn btn-secondary" href="{{route('usuario.cerrarSesion')}}">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-power" viewBox="0 0 16 16">
@@ -218,7 +223,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="card">
-                        <img src="https://images.unsplash.com/photo-1506629082955-511b1e2f9b7a" class="card-img-top" alt="Quick Ride">
+                        <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d" class="card-img-top" alt="Quick Ride">
                         <div class="card-body">
                             <h5 class="card-title"><i class="bi bi-clock"></i> Paseo rápido</h5>
                             <p class="card-text">Llega rápidamente a tu destino con tus opciones de viaje exprés.</p>

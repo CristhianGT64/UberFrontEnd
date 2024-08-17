@@ -251,7 +251,7 @@
 
                 <div class="hidden" id="requestsViewUsuarios">
                     <button class="btn btn-secondary mb-3" onclick="showMainViewUsuarios()">Regresar</button>
-                    <h2>Lista de conductores</h2>
+                    <h2>Lista de Usuarios</h2>
                     <div class="table-responsive">
                         <table id ="VerConductores" name= "verConductores" class="table table-bordered">
                             <thead>
@@ -281,7 +281,7 @@
 
                 <div class="hidden" id="requestsViewViajes">
                     <button class="btn btn-secondary mb-3" onclick="showMainViewViajes()">Regresar</button>
-                    <h2>Lista de conductores</h2>
+                    <h2>Lista de Viajes</h2>
                     <div class="table-responsive">
                         <table id ="VerConductores" name= "verConductores" class="table table-bordered">
                             <thead>
